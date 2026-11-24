@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roselle - Dream, Create, Bloom</title>
+  <meta name="theme-color" content="#fff8f7" />
+  <meta name="description" content="Roselle is a little corner of the internet for thoughtful ideas, creative projects, and everyday beauty." />
+  <title>Roselle — Dream, Create, Bloom</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -20,157 +22,291 @@
           }
         }
       }
-    }
+    };
   </script>
   <style>
-    html { scroll-behavior: smooth; }
-    body { background: #fff; }
-    .hero-fade {
-      background: linear-gradient(90deg, rgba(255,241,240,.12), rgba(255,255,255,0) 30%);
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 2rem;
+    }
+
+    body {
+      background: #fffdfc;
+    }
+
+    .page-enter {
+      animation: page-enter 800ms ease-out both;
+    }
+
+    .project-image img {
+      transition: transform 650ms cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .project-card:hover .project-image img,
+    .project-card:focus-visible .project-image img {
+      transform: scale(1.06);
+    }
+
+    .project-overlay {
+      opacity: 0;
+      transition: opacity 300ms ease;
+    }
+
+    .project-card:hover .project-overlay,
+    .project-card:focus-visible .project-overlay {
+      opacity: 1;
+    }
+
+    @keyframes page-enter {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
-<body class="font-serif text-ink">
-  <header class="h-[47px] border-b border-rose/20 md:h-[47px]">
-    <div class="mx-auto flex h-full max-w-[720px] items-center justify-between px-6 md:px-0">
-      <a href="#" class="text-[17px] font-medium tracking-[0.01em] text-rose">Roselle <span class="text-[18px]">✦</span></a>
-      <nav class="flex items-center gap-7 font-sans text-[8px] text-rose md:gap-8">
-        <a href="#" class="border-b border-rose pb-1">Home</a>
-        <a href="#about" class="pb-1 transition hover:border-b hover:border-rose">About</a>
-        <a href="#projects" class="pb-1 transition hover:border-b hover:border-rose">Projects</a>
-        <a href="#contact" class="pb-1 transition hover:border-b hover:border-rose">Contact</a>
-        <a href="#" aria-label="Go to next section" class="ml-1 text-[12px]">→</a>
+<body class="font-serif text-ink antialiased">
+  <a href="#main" class="sr-only z-50 rounded-full bg-white px-5 py-3 text-rose focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:ring-2 focus:ring-rose">
+    Skip to content
+  </a>
+
+  <header class="relative z-20 border-b border-rose/15 bg-[#fffdfc]">
+    <div class="mx-auto flex min-h-[76px] max-w-6xl items-center justify-between px-5 sm:px-8">
+      <a href="#home" class="text-2xl tracking-tight text-rose transition hover:text-[#965758] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rose">
+        Roselle <span class="ml-1 text-base" aria-hidden="true">✦</span>
+      </a>
+
+      <button
+        id="menu-toggle"
+        type="button"
+        class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-rose/30 text-rose transition hover:bg-blush focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose md:hidden"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        aria-label="Open navigation menu"
+      >
+        <svg id="menu-icon" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+
+      <nav id="primary-navigation" aria-label="Main navigation" class="absolute left-0 right-0 top-full hidden border-b border-rose/15 bg-[#fffdfc] px-5 py-4 shadow-sm md:static md:block md:border-0 md:bg-transparent md:p-0 md:shadow-none">
+        <ul class="flex flex-col gap-1 font-sans text-sm text-ink md:flex-row md:items-center md:gap-9">
+          <li><a href="#home" class="block rounded-lg px-3 py-3 transition hover:bg-blush hover:text-rose focus-visible:outline focus-visible:outline-2 focus-visible:outline-rose md:px-0 md:py-2">Home</a></li>
+          <li><a href="#about" class="block rounded-lg px-3 py-3 transition hover:bg-blush hover:text-rose focus-visible:outline focus-visible:outline-2 focus-visible:outline-rose md:px-0 md:py-2">About</a></li>
+          <li><a href="#projects" class="block rounded-lg px-3 py-3 transition hover:bg-blush hover:text-rose focus-visible:outline focus-visible:outline-2 focus-visible:outline-rose md:px-0 md:py-2">Projects</a></li>
+          <li><a href="#contact" class="block rounded-lg px-3 py-3 transition hover:bg-blush hover:text-rose focus-visible:outline focus-visible:outline-2 focus-visible:outline-rose md:px-0 md:py-2">Contact</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="relative mx-auto grid h-[286px] max-w-[720px] grid-cols-1 md:grid-cols-2">
-      <div class="flex items-center bg-[#fff1f0] px-10">
-        <div class="relative">
-          <h1 class="text-[70px] leading-[0.82] tracking-[-0.055em] text-[#ad6d6c]">Roselle <span class="ml-1 inline-block align-[11px] text-[18px]">✦</span></h1>
-          <p class="mt-6 text-[15px] italic tracking-[0.02em] text-rose">Dream · Create · Bloom</p>
-          <p class="mt-7 max-w-[190px] font-sans text-[9px] leading-[1.65] text-[#80696a]">
-            A little corner of the internet,<br />for bigger dreams.
+  <main id="main">
+    <section id="home" aria-labelledby="hero-title" class="page-enter mx-auto grid max-w-6xl overflow-hidden bg-[#fff3f1] md:min-h-[570px] md:grid-cols-2">
+      <div class="flex items-center px-6 py-16 sm:px-12 sm:py-20 lg:px-20">
+        <div class="max-w-xl">
+          <p class="mb-5 font-sans text-xs font-medium uppercase tracking-[0.3em] text-rose/80">A little space to grow</p>
+          <h1 id="hero-title" class="text-6xl leading-[0.98] tracking-[-0.055em] text-[#ad6d6c] sm:text-7xl lg:text-8xl">
+            Roselle <span class="inline-block align-top text-2xl sm:text-3xl" aria-hidden="true">✦</span>
+          </h1>
+          <p class="mt-6 text-xl italic tracking-wide text-rose sm:text-2xl">Dream · Create · Bloom</p>
+          <p class="mt-6 max-w-md font-sans text-base leading-7 text-[#80696a] sm:text-lg sm:leading-8">
+            A little corner of the internet for bigger dreams, thoughtful ideas, and the beauty in everyday things.
           </p>
-          <a href="#projects" class="mt-7 flex h-[32px] w-[103px] items-center justify-center rounded-full border border-rose/60 font-sans text-[8px] text-rose transition hover:bg-rose hover:text-white">
-            Explore More <span class="ml-3">›</span>
+          <a href="#projects" class="mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-rose px-6 font-sans text-sm font-medium text-rose transition duration-300 hover:-translate-y-0.5 hover:bg-rose hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rose">
+            Explore the projects <span aria-hidden="true">→</span>
           </a>
         </div>
       </div>
-
-      <div class="relative hidden overflow-hidden md:block">
+      <div class="relative min-h-[280px] overflow-hidden sm:min-h-[380px] md:min-h-full">
         <img
-          src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=90"
-          alt="Soft pink roses"
-          class="h-full w-full scale-[1.04] object-cover object-[58%_52%]"
+          src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1400&q=90"
+          alt="A lush bouquet of soft pink and white flowers"
+          class="absolute inset-0 h-full w-full object-cover object-center"
+          fetchpriority="high"
         />
-        <div class="hero-fade absolute inset-0"></div>
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#695453]/20 via-transparent to-white/10 md:bg-gradient-to-r md:from-[#fff3f1]/35 md:via-transparent"></div>
+        <p class="absolute bottom-5 right-5 rounded-full bg-white/80 px-4 py-2 font-sans text-xs tracking-wide text-ink backdrop-blur-sm sm:bottom-7 sm:right-7">Made with room to bloom</p>
       </div>
-      <a href="#about" aria-label="Scroll down" class="absolute left-1/2 top-[238px] z-10 hidden -translate-x-1/2 flex-col items-center text-rose/70 md:flex">
-        <span class="flex h-[24px] w-[16px] items-start justify-center rounded-full border border-rose/60 pt-1">
-          <span class="h-[5px] w-px bg-rose/60"></span>
-        </span>
-        <span class="-mt-[2px] text-[14px]">↓</span>
-      </a>
     </section>
 
-    <section id="about" class="mx-auto grid max-w-[720px] grid-cols-1 gap-0 px-6 py-[20px] md:grid-cols-2 md:px-10">
-      <div class="h-[210px] overflow-hidden rounded-t-[24px] md:rounded-[24px]">
+    <section id="about" aria-labelledby="about-title" class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 sm:py-20 md:grid-cols-2 md:gap-16 lg:gap-24 lg:py-28">
+      <div class="relative">
+        <div class="absolute -bottom-4 -left-4 h-full w-full rounded-[2rem] border border-rose/25 sm:-bottom-5 sm:-left-5"></div>
         <img
-          src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=900&q=90"
-          alt="Flowers in a bright creative workspace"
-          class="h-full w-full object-cover"
+          src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1200&q=90"
+          alt="Sunlit green leaves bringing a little calm to a creative space"
+          class="relative aspect-[4/3] w-full rounded-[2rem] object-cover"
+          loading="lazy"
         />
       </div>
-      <div class="relative flex h-[210px] flex-col justify-center px-10">
-        <h2 class="text-[17px] tracking-[0.01em] text-rose">About Roselle <span class="ml-12 text-[10px]">✦</span></h2>
-        <div class="mt-4 h-px w-[180px] bg-rose/40"></div>
-        <p class="mt-3 max-w-[180px] font-sans text-[8px] leading-[1.75] text-[#80696a]">
-          A space to explore ideas,<br />share creativity,<br />and embrace the little joys in life.
+      <div class="relative py-2">
+        <p class="font-sans text-xs font-medium uppercase tracking-[0.28em] text-rose/80">A note from Roselle</p>
+        <h2 id="about-title" class="mt-4 text-4xl leading-tight text-rose sm:text-5xl">A softer place<br class="hidden sm:block" /> for bright ideas.</h2>
+        <div class="my-6 h-px w-24 bg-rose/50"></div>
+        <p class="max-w-xl font-sans text-base leading-7 text-[#80696a] sm:text-lg sm:leading-8">
+          Roselle is a space to explore ideas, share creativity, and embrace the little joys in life. Here, we believe beautiful things grow when you give them time, care, and a little room to wander.
         </p>
-        <a href="#" class="mt-5 flex h-[31px] w-[99px] items-center justify-center rounded-full border border-rose/60 font-sans text-[8px] text-rose transition hover:bg-rose hover:text-white">
-          Learn More <span class="ml-3">›</span>
+        <p class="mt-4 max-w-xl font-sans text-base leading-7 text-[#80696a] sm:text-lg sm:leading-8">
+          Come for a quiet moment of inspiration; stay for whatever you feel like dreaming up next.
+        </p>
+        <a href="#contact" class="mt-7 inline-flex min-h-11 items-center gap-3 rounded-full border border-rose/60 px-5 font-sans text-sm font-medium text-rose transition hover:bg-rose hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rose">
+          Say hello <span aria-hidden="true">→</span>
         </a>
-        <svg class="absolute bottom-1 right-0 h-[88px] w-[170px] text-rose/35" viewBox="0 0 170 88" fill="none" aria-hidden="true">
-          <path d="M12 76C42 52 70 42 106 28C126 20 139 12 153 7" stroke="currentColor" stroke-width="1"/>
-          <path d="M106 28C109 18 115 10 125 6C131 3 139 5 141 11C143 17 135 23 128 25C119 28 112 29 106 28Z" stroke="currentColor" stroke-width="1"/>
-          <path d="M124 24C130 27 137 28 143 27M128 24C125 18 123 14 123 10M132 22C137 16 142 13 148 12M137 26C145 30 153 34 160 37" stroke="currentColor" stroke-width="1"/>
-        </svg>
+        <span class="pointer-events-none absolute -bottom-8 right-1 text-5xl text-rose/25 sm:bottom-0 sm:right-0" aria-hidden="true">✿</span>
       </div>
     </section>
 
-    <section id="projects" class="mx-auto max-w-[720px] px-6 pb-11 md:px-10">
-      <div class="mb-4 flex items-center">
-        <h2 class="mr-5 shrink-0 text-[17px] text-rose">Our Projects</h2>
-        <div class="h-px flex-1 bg-rose/35"></div>
-        <span class="ml-3 text-[10px] text-rose">✦</span>
-        <a href="#" class="ml-auto font-sans text-[8px] text-rose">View All <span class="ml-2">›</span></a>
-      </div>
-      <div class="grid grid-cols-3 gap-4">
-        <div class="h-[120px] overflow-hidden rounded-[7px]">
-          <img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=700&q=90" alt="Pink tulips" class="h-full w-full object-cover" />
-        </div>
-        <div class="h-[120px] overflow-hidden rounded-[7px]">
-          <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=700&q=90" alt="Creative desk with flowers" class="h-full w-full object-cover" />
-        </div>
-        <div class="h-[120px] overflow-hidden rounded-[7px]">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=90" alt="Dreamy pink clouds" class="h-full w-full object-cover" />
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="border-t border-rose/10 bg-[#fff8f7]">
-      <div class="mx-auto grid max-w-[720px] gap-8 px-6 py-12 md:grid-cols-[0.78fr_1.22fr] md:px-10 md:py-14">
-        <div>
-          <p class="font-sans text-[8px] uppercase tracking-[0.28em] text-rose/70">Get in touch</p>
-          <h2 class="mt-3 text-[28px] leading-tight text-rose">Let’s create<br />something lovely.</h2>
-          <p class="mt-5 max-w-[200px] font-sans text-[9px] leading-[1.8] text-[#80696a]">
-            Have a dream, idea, or collaboration in mind? I’d love to hear from you.
+    <section id="projects" aria-labelledby="projects-title" class="bg-[#fff8f7]">
+      <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:py-24">
+        <div class="mb-9 flex flex-col gap-3 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="font-sans text-xs font-medium uppercase tracking-[0.28em] text-rose/80">Collected with care</p>
+            <h2 id="projects-title" class="mt-3 text-4xl text-rose sm:text-5xl">Little things in bloom</h2>
+          </div>
+          <p class="max-w-md font-sans text-base leading-7 text-[#80696a] sm:text-right">
+            A few creative explorations inspired by flowers, slower days, and the joy of making.
           </p>
-          <a href="mailto:hello@roselle.com" class="mt-6 inline-block font-sans text-[9px] text-rose underline decoration-rose/30 underline-offset-4">
+        </div>
+
+        <div class="grid gap-7 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          <a href="#contact" class="project-card group block rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rose" aria-label="Ask about Petal Stories">
+            <div class="project-image relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#f2dedb]">
+              <img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=900&q=90" alt="Fresh pink tulips gathered in a sunlit garden" class="h-full w-full object-cover" loading="lazy" />
+              <span class="project-overlay absolute inset-0 flex items-center justify-center bg-[#695453]/25 text-white">
+                <span class="rounded-full border border-white/80 px-5 py-2 font-sans text-sm">Ask about this project →</span>
+              </span>
+            </div>
+            <div class="flex items-start justify-between gap-4 pt-5">
+              <div>
+                <h3 class="text-2xl text-rose transition group-hover:text-[#965758]">Petal Stories</h3>
+                <p class="mt-2 font-sans text-base leading-6 text-[#80696a]">A visual love letter to the fleeting beauty of garden blooms.</p>
+              </div>
+              <span class="mt-1 text-xl text-rose/70 transition group-hover:translate-x-1" aria-hidden="true">↗</span>
+            </div>
+          </a>
+
+          <a href="#contact" class="project-card group block rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rose" aria-label="Ask about The Sunday Edit">
+            <div class="project-image relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#f2dedb]">
+              <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=900&q=90" alt="A peaceful creative desk with a vase of flowers and an open notebook" class="h-full w-full object-cover" loading="lazy" />
+              <span class="project-overlay absolute inset-0 flex items-center justify-center bg-[#695453]/25 text-white">
+                <span class="rounded-full border border-white/80 px-5 py-2 font-sans text-sm">Ask about this project →</span>
+              </span>
+            </div>
+            <div class="flex items-start justify-between gap-4 pt-5">
+              <div>
+                <h3 class="text-2xl text-rose transition group-hover:text-[#965758]">The Sunday Edit</h3>
+                <p class="mt-2 font-sans text-base leading-6 text-[#80696a]">Small rituals and thoughtful details for a slower kind of Sunday.</p>
+              </div>
+              <span class="mt-1 text-xl text-rose/70 transition group-hover:translate-x-1" aria-hidden="true">↗</span>
+            </div>
+          </a>
+
+          <a href="#contact" class="project-card group block rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rose sm:col-span-2 lg:col-span-1" aria-label="Ask about Cloud Notes">
+            <div class="project-image relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#f2dedb]">
+              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=90" alt="Pastel evening clouds floating above a quiet landscape" class="h-full w-full object-cover" loading="lazy" />
+              <span class="project-overlay absolute inset-0 flex items-center justify-center bg-[#695453]/25 text-white">
+                <span class="rounded-full border border-white/80 px-5 py-2 font-sans text-sm">Ask about this project →</span>
+              </span>
+            </div>
+            <div class="flex items-start justify-between gap-4 pt-5">
+              <div>
+                <h3 class="text-2xl text-rose transition group-hover:text-[#965758]">Cloud Notes</h3>
+                <p class="mt-2 font-sans text-base leading-6 text-[#80696a]">A collection of daydreams, color palettes, and open skies.</p>
+              </div>
+              <span class="mt-1 text-xl text-rose/70 transition group-hover:translate-x-1" aria-hidden="true">↗</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title" class="border-t border-rose/10 bg-[#fffdfc]">
+      <div class="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 sm:py-20 md:grid-cols-[0.85fr_1.15fr] md:gap-16 lg:gap-24 lg:py-24">
+        <div>
+          <p class="font-sans text-xs font-medium uppercase tracking-[0.28em] text-rose/80">A note is always welcome</p>
+          <h2 id="contact-title" class="mt-4 text-4xl leading-tight text-rose sm:text-5xl">Let’s make<br class="hidden sm:block" /> something lovely.</h2>
+          <p class="mt-5 max-w-md font-sans text-base leading-7 text-[#80696a] sm:text-lg sm:leading-8">
+            Have a dream, an idea, or a collaboration in mind? I’d love to hear what you’re imagining.
+          </p>
+          <a href="mailto:hello@roselle.com" class="mt-6 inline-flex min-h-11 items-center font-sans text-base text-rose underline decoration-rose/40 underline-offset-4 transition hover:decoration-rose focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rose">
             hello@roselle.com
           </a>
         </div>
 
-        <form class="grid gap-4" action="#" method="post">
-          <div class="grid gap-4 sm:grid-cols-2">
-            <label class="font-sans text-[8px] text-rose">
-              Name
-              <input name="name" type="text" placeholder="Your name" class="mt-2 h-10 w-full border-b border-rose/30 bg-transparent px-1 font-serif text-[12px] text-ink outline-none transition placeholder:text-[#bdaaaa] focus:border-rose" />
+        <form id="contact-form" class="rounded-3xl border border-rose/15 bg-[#fff8f7] p-5 shadow-[0_12px_40px_rgba(105,84,83,0.06)] sm:p-8" action="mailto:hello@roselle.com" method="post" enctype="text/plain">
+          <div class="grid gap-5 sm:grid-cols-2">
+            <label for="name" class="font-sans text-sm font-medium text-ink">
+              Your name
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="How should I address you?" required class="mt-2 min-h-12 w-full rounded-xl border border-rose/20 bg-white px-4 font-sans text-base text-ink outline-none transition placeholder:text-[#aa9695] focus:border-rose focus:ring-2 focus:ring-rose/15" />
             </label>
-            <label class="font-sans text-[8px] text-rose">
-              Email
-              <input name="email" type="email" placeholder="your@email.com" class="mt-2 h-10 w-full border-b border-rose/30 bg-transparent px-1 font-serif text-[12px] text-ink outline-none transition placeholder:text-[#bdaaaa] focus:border-rose" />
+            <label for="email" class="font-sans text-sm font-medium text-ink">
+              Email address
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required class="mt-2 min-h-12 w-full rounded-xl border border-rose/20 bg-white px-4 font-sans text-base text-ink outline-none transition placeholder:text-[#aa9695] focus:border-rose focus:ring-2 focus:ring-rose/15" />
             </label>
           </div>
-          <label class="font-sans text-[8px] text-rose">
-            Message
-            <textarea name="message" rows="3" placeholder="Tell me about your idea..." class="mt-2 w-full resize-none border-b border-rose/30 bg-transparent px-1 py-2 font-serif text-[12px] text-ink outline-none transition placeholder:text-[#bdaaaa] focus:border-rose"></textarea>
+          <label for="message" class="mt-5 block font-sans text-sm font-medium text-ink">
+            Your message
+            <textarea id="message" name="message" rows="5" placeholder="Tell me a little about what you have in mind..." required class="mt-2 w-full resize-y rounded-xl border border-rose/20 bg-white px-4 py-3 font-sans text-base leading-6 text-ink outline-none transition placeholder:text-[#aa9695] focus:border-rose focus:ring-2 focus:ring-rose/15"></textarea>
           </label>
-          <button type="submit" class="mt-2 flex h-[34px] w-[112px] items-center justify-center rounded-full border border-rose/60 font-sans text-[8px] text-rose transition hover:bg-rose hover:text-white">
-            Send Message <span class="ml-3">›</span>
+          <p id="form-note" class="mt-4 font-sans text-sm leading-6 text-[#80696a]">
+            Sending opens your email app with your message ready to go.
+          </p>
+          <button type="submit" class="mt-5 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-rose px-6 font-sans text-sm font-medium text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#965758] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rose">
+            Send a little note <span aria-hidden="true">→</span>
           </button>
         </form>
       </div>
     </section>
   </main>
 
-  <footer class="h-[102px] border-t border-rose/10">
-    <div class="mx-auto max-w-[720px] px-10 pt-4">
-      <div class="grid grid-cols-[1fr_1fr_1fr] items-center">
-        <div class="text-[16px] text-rose">Roselle <span class="ml-1 text-[10px]">✦</span></div>
-        <div class="flex items-center">
-          <div class="h-px flex-1 bg-rose/25"></div>
-          <span class="mx-3 text-[9px] text-rose">✦</span>
-          <div class="h-px flex-1 bg-rose/25"></div>
-        </div>
-        <div class="flex justify-end gap-4 font-sans text-[12px] text-rose">
-          <span>◎</span><span>◎</span><span>▶</span>
-        </div>
-      </div>
-      <p class="mt-5 text-center font-sans text-[7px] text-[#9b8788]">© 2026 Roselle. All rights reserved.</p>
+  <footer class="border-t border-rose/15 bg-[#fff8f7]">
+    <div class="mx-auto flex max-w-6xl flex-col items-center gap-5 px-5 py-8 text-center sm:px-8 md:flex-row md:justify-between md:text-left">
+      <a href="#home" class="text-2xl text-rose">Roselle <span class="ml-1 text-sm" aria-hidden="true">✦</span></a>
+      <p class="font-sans text-sm text-[#80696a]">A little corner of the internet, for bigger dreams.</p>
+      <p class="font-sans text-sm text-[#9b8788]">© <span id="year">2026</span> Roselle. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const navigation = document.getElementById("primary-navigation");
+
+    menuToggle.addEventListener("click", () => {
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+      menuToggle.setAttribute("aria-label", isExpanded ? "Open navigation menu" : "Close navigation menu");
+      navigation.classList.toggle("hidden", isExpanded);
+    });
+
+    navigation.addEventListener("click", (event) => {
+      if (event.target.closest("a") && window.matchMedia("(max-width: 767px)").matches) {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        navigation.classList.add("hidden");
+      }
+    });
+
+    document.getElementById("contact-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const name = form.elements.name.value.trim();
+      const email = form.elements.email.value.trim();
+      const message = form.elements.message.value.trim();
+      const subject = encodeURIComponent("A little note from " + name);
+      const body = encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message);
+      window.location.href = "mailto:hello@roselle.com?subject=" + subject + "&body=" + body;
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
