@@ -6,73 +6,7 @@
   <meta name="theme-color" content="#fff8f7" />
   <meta name="description" content="Roselle is a little corner of the internet for thoughtful ideas, creative projects, and everyday beauty." />
   <title>Roselle — Dream, Create, Bloom</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            rose: "#b66f70",
-            ink: "#695453",
-            blush: "#fff3f1"
-          },
-          fontFamily: {
-            serif: ["Georgia", "Times New Roman", "serif"],
-            sans: ["Inter", "Arial", "sans-serif"]
-          }
-        }
-      }
-    };
-  </script>
-  <style>
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 2rem;
-    }
-
-    body {
-      background: #fffdfc;
-    }
-
-    .page-enter {
-      animation: page-enter 800ms ease-out both;
-    }
-
-    .project-image img {
-      transition: transform 650ms cubic-bezier(.2, .7, .2, 1);
-    }
-
-    .project-card:hover .project-image img,
-    .project-card:focus-visible .project-image img {
-      transform: scale(1.06);
-    }
-
-    .project-overlay {
-      opacity: 0;
-      transition: opacity 300ms ease;
-    }
-
-    .project-card:hover .project-overlay,
-    .project-card:focus-visible .project-overlay {
-      opacity: 1;
-    }
-
-    @keyframes page-enter {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body class="font-serif text-ink antialiased">
   <a href="#main" class="sr-only z-50 rounded-full bg-white px-5 py-3 text-rose focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:ring-2 focus:ring-rose">
