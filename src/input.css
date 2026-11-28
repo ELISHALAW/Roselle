@@ -34,6 +34,23 @@ body {
   opacity: 1;
 }
 
+.hero-photo {
+  filter: brightness(1.09) saturate(0.78) contrast(0.88);
+}
+
+.hero-overlay {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 253, 252, 1) 0%,
+      rgba(255, 253, 252, 0.96) 34%,
+      rgba(255, 253, 252, 0.78) 49%,
+      rgba(255, 253, 252, 0.18) 66%,
+      rgba(255, 253, 252, 0) 78%
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+}
+
 @keyframes page-enter {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
